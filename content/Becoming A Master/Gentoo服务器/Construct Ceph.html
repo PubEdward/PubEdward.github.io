@@ -1,0 +1,2543 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ceph 分布式存储系统 · 随笔</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-filename/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Ceph status.html" />
+    
+    
+    <link rel="prev" href="Gentoo maintain.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="" target="_blank" class="custom-link">首页</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">非技术</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    小说
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../novel/artical/">
+            
+                <a href="../../novel/artical/">
+            
+                    
+                        <b>1.1.1.</b>
+                    
+                    摘录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../novel/artical/欧什的最后时刻.html">
+            
+                <a href="../../novel/artical/欧什的最后时刻.html">
+            
+                    
+                        <b>1.1.1.1.</b>
+                    
+                    欧什的最后时刻
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="../../novel/artical/我应该具备的品质.html">
+            
+                <a href="../../novel/artical/我应该具备的品质.html">
+            
+                    
+                        <b>1.1.1.2.</b>
+                    
+                    我应该具备的品质
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Becoming A Master</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../introduceme.html">
+            
+                <a href="../introduceme.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Introduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Gentoo服务器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="Gentoo step.html">
+            
+                <a href="Gentoo step.html">
+            
+                    
+                        <b>2.2.1.</b>
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html">
+            
+                    
+                        <b>2.2.2.</b>
+                    
+                    维护
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#常用操作">
+            
+                    
+                        <b>2.2.2.1.</b>
+                    
+                    常用操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#中文字体">
+            
+                    
+                        <b>2.2.2.2.</b>
+                    
+                    中文字体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#临时配置网络">
+            
+                    
+                        <b>2.2.2.3.</b>
+                    
+                    临时配置网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.4" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#配置网络">
+            
+                    
+                        <b>2.2.2.4.</b>
+                    
+                    配置网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.5" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#安装和启动plasma">
+            
+                    
+                        <b>2.2.2.5.</b>
+                    
+                    安装和启动plasma
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.6" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#用户配置">
+            
+                    
+                        <b>2.2.2.6.</b>
+                    
+                    用户配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.7" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#使用USE变量">
+            
+                    
+                        <b>2.2.2.7.</b>
+                    
+                    使用USE变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.8" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#记一次更新系统故障的修复">
+            
+                    
+                        <b>2.2.2.8.</b>
+                    
+                    记一次更新系统故障的修复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.9" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#自动授时">
+            
+                    
+                        <b>2.2.2.9.</b>
+                    
+                    自动授时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.10" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#dnsmasq配置域名解析系统">
+            
+                    
+                        <b>2.2.2.10.</b>
+                    
+                    dnsmasq配置域名解析系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.11" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#fcitx中文输入法">
+            
+                    
+                        <b>2.2.2.11.</b>
+                    
+                    fcitx中文输入法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.12" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#数据库">
+            
+                    
+                        <b>2.2.2.12.</b>
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.12.1" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#postgres">
+            
+                    
+                        <b>2.2.2.12.1.</b>
+                    
+                    postgres
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.12.2" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#mysql">
+            
+                    
+                        <b>2.2.2.12.2.</b>
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.13" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#apache服务器">
+            
+                    
+                        <b>2.2.2.13.</b>
+                    
+                    apache服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.14" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#git服务器">
+            
+                    
+                        <b>2.2.2.14.</b>
+                    
+                    git服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.15" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#dotproject服务器">
+            
+                    
+                        <b>2.2.2.15.</b>
+                    
+                    dotproject服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.16" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#ceph系统">
+            
+                    
+                        <b>2.2.2.16.</b>
+                    
+                    ceph系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.17" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#Samba">
+            
+                    
+                        <b>2.2.2.17.</b>
+                    
+                    Samba
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.18" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#Dlna">
+            
+                    
+                        <b>2.2.2.18.</b>
+                    
+                    Dlna
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.19" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#mtpdevice">
+            
+                    
+                        <b>2.2.2.19.</b>
+                    
+                    mtp设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.20" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#nfs服务器">
+            
+                    
+                        <b>2.2.2.20.</b>
+                    
+                    nfs服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.21" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#Audio">
+            
+                    
+                        <b>2.2.2.21.</b>
+                    
+                    Audio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.22" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#Docker">
+            
+                    
+                        <b>2.2.2.22.</b>
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.23" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#远程编码服务器">
+            
+                    
+                        <b>2.2.2.23.</b>
+                    
+                    远程编码服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.24" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#磁盘健康监控">
+            
+                    
+                        <b>2.2.2.24.</b>
+                    
+                    磁盘健康监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.25" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#nextcloud">
+            
+                    
+                        <b>2.2.2.25.</b>
+                    
+                    nextcloud
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.26" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#使kate支持markdown预览">
+            
+                    
+                        <b>2.2.2.26.</b>
+                    
+                    使kate支持markdown预览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.27" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#openrc配置示例">
+            
+                    
+                        <b>2.2.2.27.</b>
+                    
+                    openrc配置示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.28" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#ssh免密登录">
+            
+                    
+                        <b>2.2.2.28.</b>
+                    
+                    ssh免密登录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.29" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#frpc">
+            
+                    
+                        <b>2.2.2.29.</b>
+                    
+                    frpc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.30" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#获取Go包">
+            
+                    
+                        <b>2.2.2.30.</b>
+                    
+                    获取Go包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.31" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#layman">
+            
+                    
+                        <b>2.2.2.31.</b>
+                    
+                    layman
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.32" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#更改系统默认编辑器">
+            
+                    
+                        <b>2.2.2.32.</b>
+                    
+                    更改系统默认编辑器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.33" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#编辑sudoers">
+            
+                    
+                        <b>2.2.2.33.</b>
+                    
+                    编辑sudoers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.34" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#python包管理">
+            
+                    
+                        <b>2.2.2.34.</b>
+                    
+                    python包管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.35" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#字体配置">
+            
+                    
+                        <b>2.2.2.35.</b>
+                    
+                    字体配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.36" data-path="Gentoo maintain.html">
+            
+                <a href="Gentoo maintain.html#virtualbox">
+            
+                    
+                        <b>2.2.2.36.</b>
+                    
+                    Virtualbox
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.3" data-path="Construct Ceph.html">
+            
+                <a href="Construct Ceph.html">
+            
+                    
+                        <b>2.2.3.</b>
+                    
+                    ceph 分布式存储系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.3.1" data-path="Ceph status.html">
+            
+                <a href="Ceph status.html">
+            
+                    
+                        <b>2.2.3.1.</b>
+                    
+                    ceph pg 状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Open Suse
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../Open Suse/OpenSuse step.html">
+            
+                <a href="../Open Suse/OpenSuse step.html">
+            
+                    
+                        <b>2.3.1.</b>
+                    
+                    常用操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../Open Suse/OpenSuse maintain.html">
+            
+                <a href="../Open Suse/OpenSuse maintain.html">
+            
+                    
+                        <b>2.3.2.</b>
+                    
+                    维护
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    Visualisation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../Visualisation/Vbox.html">
+            
+                <a href="../Visualisation/Vbox.html">
+            
+                    
+                        <b>2.4.1.</b>
+                    
+                    VBox
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1.1" data-path="../Visualisation/Vbox.html">
+            
+                <a href="../Visualisation/Vbox.html#虚拟硬盘转换">
+            
+                    
+                        <b>2.4.1.1.</b>
+                    
+                    虚拟硬盘转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>2.5.</b>
+                    
+                    未归类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../unclassfied/deep in memory align.html">
+            
+                <a href="../unclassfied/deep in memory align.html">
+            
+                    
+                        <b>2.5.1.</b>
+                    
+                    深入内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../unclassfied/tech pool.html">
+            
+                <a href="../unclassfied/tech pool.html">
+            
+                    
+                        <b>2.5.2.</b>
+                    
+                    技术池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Follow A Master</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../Follow A Master/linux career introduction.html">
+            
+                <a href="../../Follow A Master/linux career introduction.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    职业发展步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../Follow A Master/linux性能监控测试优化工具.html">
+            
+                <a href="../../Follow A Master/linux性能监控测试优化工具.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    linux性能监控、测试、优化工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    开源项目池
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#集中配置管理工具">
+            
+                    
+                        <b>3.3.1.</b>
+                    
+                    集中配置管理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#IBM同态加密">
+            
+                    
+                        <b>3.3.2.</b>
+                    
+                    IBM同态加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#高性能通信框架">
+            
+                    
+                        <b>3.3.3.</b>
+                    
+                    高性能通信框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#开源量化交易研究框架">
+            
+                    
+                        <b>3.3.4.</b>
+                    
+                    开源量化交易研究框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#开源自动驾驶平台">
+            
+                    
+                        <b>3.3.5.</b>
+                    
+                    开源自动驾驶平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#分布式图片实时动态压缩">
+            
+                    
+                        <b>3.3.6.</b>
+                    
+                    分布式图片实时动态压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#高性能RPC开发框架">
+            
+                    
+                        <b>3.3.7.</b>
+                    
+                    高性能RPC开发框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.8" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#分布式TCP压力测试工具">
+            
+                    
+                        <b>3.3.8.</b>
+                    
+                    分布式TCP压力测试工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.9" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#中文文本转语音引擎">
+            
+                    
+                        <b>3.3.9.</b>
+                    
+                    中文文本转语音引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.10" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#在Linux系统中运行Android应用">
+            
+                    
+                        <b>3.3.10.</b>
+                    
+                    在Linux系统中运行Android应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.11" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#机器学习系统">
+            
+                    
+                        <b>3.3.11.</b>
+                    
+                    机器学习系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#NoSql">
+            
+                    
+                        <b>3.3.12.</b>
+                    
+                    NoSql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.12.1" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Redis">
+            
+                    
+                        <b>3.3.12.1.</b>
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.2" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Leveldb">
+            
+                    
+                        <b>3.3.12.2.</b>
+                    
+                    Leveldb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.3" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Mongodb">
+            
+                    
+                        <b>3.3.12.3.</b>
+                    
+                    Mongodb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.4" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#HBase">
+            
+                    
+                        <b>3.3.12.4.</b>
+                    
+                    HBase
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.5" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#BerkeleyDB">
+            
+                    
+                        <b>3.3.12.5.</b>
+                    
+                    BerkeleyDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.6" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#CouchDB">
+            
+                    
+                        <b>3.3.12.6.</b>
+                    
+                    CouchDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.7" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Riak">
+            
+                    
+                        <b>3.3.12.7.</b>
+                    
+                    Riak
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.8" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Membase">
+            
+                    
+                        <b>3.3.12.8.</b>
+                    
+                    Membase
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.9" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#memcachedb">
+            
+                    
+                        <b>3.3.12.9.</b>
+                    
+                    memcachedb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.10" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Neo4j">
+            
+                    
+                        <b>3.3.12.10.</b>
+                    
+                    Neo4j
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.11" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Cassandra">
+            
+                    
+                        <b>3.3.12.11.</b>
+                    
+                    Cassandra
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.12" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Hypertable">
+            
+                    
+                        <b>3.3.12.12.</b>
+                    
+                    Hypertable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.13" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#db4o">
+            
+                    
+                        <b>3.3.12.13.</b>
+                    
+                    db4o
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.14" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#TC-TT">
+            
+                    
+                        <b>3.3.12.14.</b>
+                    
+                    TC-TT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.15" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Versant">
+            
+                    
+                        <b>3.3.12.15.</b>
+                    
+                    Versant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.16" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#DynamoDB">
+            
+                    
+                        <b>3.3.12.16.</b>
+                    
+                    DynamoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.17" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Flare">
+            
+                    
+                        <b>3.3.12.17.</b>
+                    
+                    Flare
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.18" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#Memlink">
+            
+                    
+                        <b>3.3.12.18.</b>
+                    
+                    Memlink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.19" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#BaseX">
+            
+                    
+                        <b>3.3.12.19.</b>
+                    
+                    BaseX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.12.20" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#NoSQLDatabase">
+            
+                    
+                        <b>3.3.12.20.</b>
+                    
+                    NoSQLDatabase
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.13" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#数据库">
+            
+                    
+                        <b>3.3.13.</b>
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.14" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#数据中间层项目">
+            
+                    
+                        <b>3.3.14.</b>
+                    
+                    数据中间层项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.15" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#开源网盘云存储">
+            
+                    
+                        <b>3.3.15.</b>
+                    
+                    开源网盘云存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.16" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#跨平台应用开发">
+            
+                    
+                        <b>3.3.16.</b>
+                    
+                    跨平台应用开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.17" data-path="../../Follow A Master/hotproject.html">
+            
+                <a href="../../Follow A Master/hotproject.html#项目管理">
+            
+                    
+                        <b>3.3.17.</b>
+                    
+                    项目管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.18" data-path="../../Follow A Master/projhot2.html">
+            
+                <a href="../../Follow A Master/projhot2.html">
+            
+                    
+                        <b>3.3.18.</b>
+                    
+                    未分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html">
+            
+                    
+                        <b>3.4.</b>
+                    
+                    开源工具池
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#财会类软件">
+            
+                    
+                        <b>3.4.1.</b>
+                    
+                    财会类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#录音编辑类软件">
+            
+                    
+                        <b>3.4.2.</b>
+                    
+                    录音编辑类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#商业智能类软件">
+            
+                    
+                        <b>3.4.3.</b>
+                    
+                    商业智能类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#业务流程管理类软件">
+            
+                    
+                        <b>3.4.4.</b>
+                    
+                    业务流程管理类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.5" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#计算机辅助设计类软件">
+            
+                    
+                        <b>3.4.5.</b>
+                    
+                    计算机辅助设计类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.6" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#客户关系管理类软件">
+            
+                    
+                        <b>3.4.6.</b>
+                    
+                    客户关系管理类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.7" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#桌面出版类软件">
+            
+                    
+                        <b>3.4.7.</b>
+                    
+                    桌面出版类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.8" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#开发工具类软件">
+            
+                    
+                        <b>3.4.8.</b>
+                    
+                    开发工具类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.9" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#电子邮件、协同、群件类软件">
+            
+                    
+                        <b>3.4.9.</b>
+                    
+                    电子邮件、协同、群件类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.10" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#企业资源规划ERP">
+            
+                    
+                        <b>3.4.10.</b>
+                    
+                    企业资源规划ERP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.11" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#外语类软件">
+            
+                    
+                        <b>3.4.11.</b>
+                    
+                    外语类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.12" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#网关安全设备">
+            
+                    
+                        <b>3.4.12.</b>
+                    
+                    网关安全设备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.13" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#图形、绘图类软件">
+            
+                    
+                        <b>3.4.13.</b>
+                    
+                    图形、绘图类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.14" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#数学类软件">
+            
+                    
+                        <b>3.4.14.</b>
+                    
+                    数学类软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.15" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#办公效率">
+            
+                    
+                        <b>3.4.15.</b>
+                    
+                    办公效率
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.16" data-path="../../Follow A Master/hot tools.html">
+            
+                <a href="../../Follow A Master/hot tools.html#销售点终端POS">
+            
+                    
+                        <b>3.4.16.</b>
+                    
+                    销售点终端POS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >ceph 分布式存储系统</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6784;&#x5EFA;ceph&#x5206;&#x5E03;&#x5F0F;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;">&#x6784;&#x5EFA;ceph&#x5206;&#x5E03;&#x5F0F;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;</h1>
+<h3 id="a-fresh-start-for-github-cephv1400nautilus">A fresh start for github ceph(v14.0.0)nautilus</h3>
+<pre><code># cons-ceph.sh&#x53EF;&#x4EE5;&#x66F4;&#x5FEB;&#x6377;&#x90E8;ceph&#x7CFB;&#x7EDF;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E0D;&#x5B8C;&#x5584;&#xFF0C;&#x7528;&#x4E4B;&#x524D;&#x8BFB;&#x4E00;&#x904D;&#x3002;
+</code></pre><ol>
+<li><p>generate id</p>
+<pre><code> cd /etc/ceph
+ uuidgen | tee idfs
+ uuidgen | tee idosd-0
+ uuidgen | tee idosd-1
+ uuidgen | tee idosd-2
+ uuidgen | tee idosd-3
+</code></pre></li>
+<li><p>complete conf file</p>
+<pre><code> File:/etc/ceph/ceph.conf
+ [global]
+     fsid = 7ae495d5-daa7-4907-b583-fc271f2b3160
+     cluster = ceph
+     public network = 169.254.127.0/24
+
+     auth cluster required = cephx
+     auth service required = cephx
+     auth client required = cephx
+
+     osd pool default size = 2
+     osd pool default min size = 1
+
+     ; single node, turn this to zero
+     osd crush chooseleaf type = 0
+
+ [mon]
+     mon initial members = fractor
+
+ [mon.fractor]
+     host = fractor
+     mon addr = 169.254.127.7:6789
+</code></pre></li>
+<li><p>Mon installation</p>
+<pre><code> ceph-authtool --create-keyring ceph.mon.keyring --gen-key -n mon. --cap mon &apos;allow *&apos;
+ ceph-authtool --create-keyring ceph.client.admin.keyring --gen-key -n client.admin --set-uid=0 --cap mon &apos;allow *&apos; --cap osd &apos;allow *&apos; --cap mds &apos;allow&apos;
+ ceph-authtool ceph.mon.keyring --import-keyring ceph.client.admin.keyring
+ monmaptool --create --add $HOSTNAME 169.254.127.7 --fsid $(cat idfs) ceph.initial-monmap
+ mkdir -p /var/log/ceph
+ mkdir -p /var/lib/ceph/mon
+ ceph-mon --mkfs -i $HOSTNAME --monmap ceph.initial-monmap --keyring ceph.mon.keyring
+ grep &quot;key = &quot; ceph.client.admin.keyring | awk &apos;{print $3}&apos; &gt; ceph.client.admin.secret
+
+ chown ceph:ceph -R /var/log/ceph
+ chown ceph:ceph -R /var/lib/ceph
+</code></pre><p> optional:</p>
+<pre><code> rc-service ceph status
+ rc-service ceph start
+ ceph -s
+</code></pre><p> the result should be like:</p>
+<pre><code> fractor /etc/ceph # rc-service ceph status
+ === mon.fractor ===
+ From Edward: run_dir /var/run/ceph
+ From Edward: pid_file /var/run/ceph/mon.fractor.pid
+ mon.fractor: not running.
+ fractor /etc/ceph # rc-service ceph start
+ === mon.fractor ===
+ From Edward: run_dir /var/run/ceph
+ From Edward: pid_file /var/run/ceph/mon.fractor.pid
+ Starting Ceph mon.fractor on fractor...
+ fractor /etc/ceph # ceph -s
+ cluster:
+ id:     7ae495d5-daa7-4907-b583-fc271f2b3160
+ health: HEALTH_OK
+
+ services:
+ mon: 1 daemons, quorum fractor
+ mgr: no daemons active
+ osd: 0 osds: 0 up, 0 in
+
+ data:
+ pools:   0 pools, 0 pgs
+ objects: 0  objects, 0 B
+ usage:   0 B used, 0 B / 0 B avail
+ pgs:     
+</code></pre></li>
+<li><p>osd installation</p>
+<pre><code> # Prepare disk
+ fdisk /dev/sdd
+ mkfs.xfs /dev/sdd1
+ # The ceph service should be started here
+ ceph osd create $(cat idosd-0)
+ # If the id of osd is 0, then the dir should be named ceph-0, etc.
+ mkdir -p /var/lib/ceph/osd/ceph-0
+ mount /dev/sdd1 /var/lib/ceph/osd/ceph-0/
+ ceph-osd -i 0 --mkfs --mkkey --osd-uuid $(cat idosd-0) --no-mon-config
+ ceph auth add osd.0 osd &apos;allow *&apos; mon &apos;allow profile osd&apos; -i /var/lib/ceph/osd/ceph-0/keyring
+ ceph osd crush add-bucket ${HOSTNAME} host
+ ceph osd crush move ${HOSTNAME} root=default
+ ceph osd crush add osd.0 1.0 host=${HOSTNAME}
+ chown ceph:ceph -R /var/lib/ceph
+</code></pre><p> Append osd node to ceph.conf</p>
+<pre><code> File:/etc/ceph/ceph.conf
+     [osd.0]
+         host = fractor
+
+ rc-service ceph restart
+</code></pre><p> optional:</p>
+<pre><code> ceph -s
+</code></pre><p> the result should be like;</p>
+<pre><code> fractor /etc/ceph # ceph -s
+   cluster:
+     id:     7ae495d5-daa7-4907-b583-fc271f2b3160
+     health: HEALTH_WARN
+             no active mgr
+
+   services:
+     mon: 1 daemons, quorum fractor
+     mgr: no daemons active
+     osd: 1 osds: 1 up, 1 in
+
+   data:
+     pools:   0 pools, 0 pgs
+     objects: 0  objects, 0 B
+     usage:   0 B used, 0 B / 0 B avail
+     pgs:     
+</code></pre></li>
+<li><p>mgr installation</p>
+<pre><code> ceph auth get-or-create mgr.mrnobody mon &apos;allow *&apos; osd &apos;allow *&apos; mds &apos;allow *&apos;
+     [mgr.mrnobody]
+         key = AQAa1n9bAgS0BxAAQGi3z8MXP4/xBEZZvD7Q1g==
+ # export keyring for mgr.mrnobody
+ mkdir -p /var/lib/ceph/mgr/ceph-mrnobody
+ ceph auth get mgr.mrnobody -o /var/lib/ceph/mgr/ceph-mrnobody/keyring
+ # start mgr
+ ceph-mgr -i mrnobody
+</code></pre></li>
+<li><p>mds installation</p>
+<pre><code> ceph osd pool create data 64
+ ceph osd pool create metadata 64
+ ceph fs new cephfs metadata data
+ mkdir -p /var/lib/ceph/mds/ceph-a
+ ceph auth get-or-create mds.a mds &apos;allow&apos; osd &apos;allow *&apos; mon &apos;allow rwx&apos; &gt; /var/lib/ceph/mds/ceph-a/keyring
+ chown ceph:ceph -R /var/lib/ceph/
+ /etc/init.d/ceph start mds.a
+</code></pre></li>
+<li><p>cephfs mount</p>
+<pre><code> mkdir /mnt/cephfs
+
+ mount -t ceph 169.254.127.7:6789:/ /mnt/cephfs -o name=admin,secret=[secret key]
+</code></pre><p> or</p>
+<pre><code> mount -t ceph 169.254.127.7:6789:/ /mnt/cephfs -o name=admin,secretfile=[secretfile]
+</code></pre></li>
+<li><p>Regist to openrc, etc.</p>
+<pre><code> rc-update add ceph default
+ # Append to fstab
+ File:/etc/fstab
+     UUID=87e3012f-6615-4a84-99a8-bb2f7f308364   /var/lib/ceph/osd/ceph-0    xfs     defaults,noatime    0   0
+</code></pre></li>
+<li><p>Other maintain</p>
+<ol>
+<li><p>mgr</p>
+<ul>
+<li><p>change mgr user</p>
+<pre><code>  ceph auth caps mgr.mrnobody mon &apos;allow *&apos; osd &apos;allow *&apos; mds &apos;allow *&apos;
+</code></pre></li>
+<li><p>drop mgr user</p>
+<pre><code>  ceph auth del mgr.mrnobody
+</code></pre></li>
+</ul>
+</li>
+<li><p>osd</p>
+<ul>
+<li><p>reweight in crush</p>
+<p>  Correct the weight of osds in crush. To banlance amone the osds, here by volume.</p>
+<pre><code>  # 3905109820 : 3905109820 : 488147072 : 156212712 almost equal to 24 : 24 : 3 : 1
+
+  ceph osd crush reweight osd.0 24
+  ceph osd crush reweight osd.1 24
+  ceph osd crush reweight osd.2 3
+  ceph osd crush reweight osd.3 1
+</code></pre></li>
+<li><p>journal adjust online</p>
+<ol>
+<li><p>mark noout</p>
+<pre><code> ceph osd set noout
+</code></pre></li>
+<li><p>stop the target osd</p>
+<pre><code> /etc/init.d/ceph stop osd.x
+</code></pre></li>
+<li><p>flush journal</p>
+<pre><code> ceph-osd -i x --flush-journal
+</code></pre></li>
+<li><p>ceph.conf</p>
+<pre><code> [osd.x]
+     osd journal = /var/lib/ceph/osd/journal-x
+     osd journal size = 682.67 * osd weight
+</code></pre></li>
+<li><p>make new journal</p>
+<pre><code> ceph-osd -i x --mkjournal
+ chown ceph:ceph journal-x
+</code></pre></li>
+<li><p>start the target osd</p>
+<pre><code> /etc/init.d/ceph start osd.x
+</code></pre></li>
+<li><p>unmark noout</p>
+<pre><code> ceph osd unset noout
+</code></pre></li>
+</ol>
+</li>
+<li><p>test osds performance</p>
+<pre><code>  ceph tell osd.0 bench
+
+      {
+          &quot;bytes_written&quot;: 1073741824,
+          &quot;blocksize&quot;: 4194304,
+          &quot;bytes_per_sec&quot;: 56602398
+      }
+</code></pre></li>
+<li><p>Remove an osd node</p>
+<p>  There are two dim status of osd. The osd is running healthly or not takes the first dim, <code>up</code> or <code>down</code>; and osd is inside the cluster or not takes the second dim, <code>in</code> or <code>out</code>. The osd should be taked out of cluster(Data transfering), before turning it down.</p>
+<pre><code>  # take out osd 0
+  ceph osd out 0
+
+  # down osd 0
+  ;;;? init.d/ceph stop osd.0
+  # remove osd 0 from crush map
+  ceph osd crush remove osd.0
+  # Are you sure ? remove whole node
+  ceph osd crush remove ${HOSTNAME}
+
+  # del osd authrize
+  ceph auth del osd.0
+
+  # remove osd 0
+  ceph osd rm 0
+
+  umount /var/lib/ceph/mon/ceph-0
+  rm -rf /var/lib/ceph/mon/ceph-0
+  mkfs.xfs -f /dev/sdd1
+</code></pre></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="gentoo&#x81EA;&#x5E26;cephv1320">gentoo&#x81EA;&#x5E26;ceph(v13.2.0)</h3>
+<ul>
+<li><p>&#x914D;&#x7F6E;&#x5185;&#x6838;&#x4E0E;&#x5B89;&#x88C5;ceph&#x8F6F;&#x4EF6;</p>
+<pre><code>  File:/etc/portage/package.accept_keywords/ceph
+      sys-cluster/ceph
+
+  Kernel Configuration
+  Device Drivers ---&gt;
+    [*] Block devices ---&gt;
+      &lt;*&gt; Rados block device (RBD)
+  File systems ---&gt;
+    [*] Network File Systems ---&gt;
+      &lt;*&gt; Ceph distributed file system
+
+  USE=&quot;babeltrace cephfs dpdk fuse jemalloc lttng mgr-frontend static-libs system-boost xfs zfs -tcmalloc&quot; emerge --ask sys-cluster/ceph
+</code></pre></li>
+<li><p>&#x914D;&#x7F6E;ceph&#x7CFB;&#x7EDF;&#x4E0E;&#x521B;&#x5EFA;cluster&#x3001;monitor</p>
+<pre><code>  # backup fsid tmp file
+  uuidgen &gt; fsid
+  cat fsid &gt; /etc/ceph/ceph.conf
+  File:/etc/ceph/ceph.conf
+      [global]
+          fsid = c4487193-7296-4c26-9cd0-a12b35a4299e
+          cluster = ceph
+          public network = 169.254.127.0/24
+
+          auth cluster required = cephx
+          auth service required = cephx
+          auth client required = cephx
+
+          osd pool default size = 2
+          osd pool default min size = 1
+
+      [mon]
+          mon initial members = 0
+
+      [mon.0]
+          host = wisdom.fractor.net
+          mon addr = 169.254.127.7:6789
+
+      #[client.admin]
+      #    keyring = /etc/ceph/ceph.client.admin.keyring
+
+  ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --set-uid=0 --cap mon &apos;allow *&apos; --cap osd &apos;allow *&apos; --cap mds &apos;allow&apos;
+  grep &quot;key = &quot; /etc/ceph/ceph.client.admin.keyring | awk &apos;{print $3}&apos; &gt; /etc/ceph/ceph.client.admin.secret
+  ceph-authtool --create-keyring /etc/ceph/ceph.mon.keyring --gen-key -n mon. --cap mon &apos;allow *&apos; --import-keyring /etc/ceph/ceph.client.admin.keyring
+  monmaptool --create --fsid $(cat fsid) --add $HOSTNAME 169.254.127.7 /etc/ceph/ceph.initial-monmap
+  mkdir -p /var/log/ceph
+  mkdir -p /var/lib/ceph/mon
+  ceph-mon --mkfs -i $HOSTNAME --monmap /etc/ceph/ceph.initial-monmap --keyring /etc/ceph/ceph.mon.keyring
+
+  # &#x81F3;&#x6B64;&#xFF0C;&#x7528;rc-service&#x4F1A;&#x542F;&#x52A8;&#x4E0D;&#x4E86;ceph mon 0, &#x56E0;&#x4E3A;supervise&#x65E0;&#x6CD5;&#x5199;&#x5165;log&#xFF0C;&#x7136;&#x540E;&#x6740;&#x6B7B;ceph&#x3002;&#x9700;&#x8981;&#x505A;&#x5982;&#x4E0B;&#x4FEE;&#x6539;
+  File:/etc/init.d/ceph
+      #: ${user:=ceph}
+      #: ${group:=ceph}
+      : ${user:=root}
+      : ${group:=root}
+
+  # &#x6B64;&#x8F6F;&#x8FDE;&#x63A5;&#x540D;&#x79F0;&#x662F;&#x6709;&#x89C4;&#x5219;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x968F;&#x4FBF;&#x5199;
+  ln -s /etc/init.d/ceph /etc/init.d/ceph-mon.0
+  rc-update add ceph-mon.0 default
+  # &#x81F3;&#x6B64;mon&#x542F;&#x52A8;&#x6210;&#x529F;
+  rc-service ceph-mon.0 start
+</code></pre></li>
+<li><p>&#x521B;&#x5EFA;OSD</p>
+<pre><code>  uuidgen &gt; osdid(0|1)
+  mkfs.xfs -f /dev/sd(b|c)1
+  mkdir /var/lib/ceph/osd/ceph-(0|1)
+  mount /dev/sd(b|c)1 /var/lib/ceph/osd/ceph-(0|1)/
+  ceph-osd -i (0|1) --mkfs --mkkey --osd-uuid $(cat osdid(0|1)) --no-mon-config
+  ceph auth add osd.(0|1) osd &apos;allow *&apos; mon &apos;allow profile osd&apos; -i /var/lib/ceph/osd/ceph-(0|1)/keyring
+  ceph osd crush add-bucket $(hostname) host
+  ceph osd crush move $(hostname) root=default
+  ceph osd crush add osd.(0|1) 1.0 host=$(hostname)
+  ln -s /etc/init.d/ceph /etc/init.d/ceph-osd.(0|1)
+  rc-update add ceph-osd.(0|1) default
+  rc-service ceph-osd.(0|1) start
+</code></pre></li>
+<li><p>&#x521B;&#x5EFA;mds&#x7B49;</p>
+<pre><code>  ceph osd pool create data 2
+  ceph osd pool create metadata 2
+  ceph fs new cephfs metadata data
+  mkdir -p /var/lib/ceph/mds/ceph-0
+  ceph auth get-or-create mds.0 mds &apos;allow&apos; osd &apos;allow *&apos; mon &apos;allow rwx&apos; &gt; /var/lib/ceph/mds/ceph-0/keyring
+  ln -s /etc/init.d/ceph /etc/init.d/ceph-mds.0
+  rc-update add ceph-mds.0 default
+  rc-service ceph-mds.0 start
+</code></pre></li>
+<li><p>&#x521B;&#x5EFA;mgr</p>
+<pre><code>  # &#x65B0;&#x5EFA;&#x7528;&#x6237;
+  ceph auth get-or-create mgr.openstack mon &apos;allow * &apos; osd &apos;allow *&apos; mds &apos;allow *&apos;
+  # &#x5047;&#x5982;&#x7528;&#x6237;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x4FEE;&#x6539;
+  ceph auth caps mgr.openstack mon &apos;allow *&apos; osd &apos;allow *&apos; mds &apos;allow *&apos;
+  # &#x5220;&#x9664;&#x7528;&#x6237;(&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x662F;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;)
+  ceph auth del mgr.openstack
+  # &#x5BFC;&#x51FA;&#x5BC6;&#x94A5;
+  mkdir /var/lib/ceph/mgr/ceph-openstack
+  ceph auth get mgr.openstack -o /var/lib/ceph/mgr/ceph-openstack/keyring
+  # &#x542F;&#x52A8;mgr
+  ceph-mgr -i openstack
+</code></pre></li>
+</ul>
+<h3 id="pg&#x3001;pgp&#x3001;pool">PG&#x3001;PGP&#x3001;POOL</h3>
+<ol>
+<li><p>POOL&#x5E38;&#x7528;&#x64CD;&#x4F5C;</p>
+<ul>
+<li><p>&#x521B;&#x5EFA;OSD POOL</p>
+<pre><code>  ceph osd pool create pool default 64
+</code></pre></li>
+<li><p>&#x8C03;&#x6574;POOL</p>
+<pre><code>  ceph osd pool set default size 2
+</code></pre></li>
+<li><p>&#x5220;&#x9664;POOL</p>
+<pre><code>  ceph osd pool (delete|rm) default default --yes-i-really-really-mean-it
+</code></pre></li>
+<li><p>&#x8BBE;&#x7F6E;POOL&#x914D;&#x989D;</p>
+<pre><code>  # &#x6700;&#x591A;100&#x4E2A;&#x5BF9;&#x8C61;
+  ceph osd pool set-quota default max_objects 100
+  # &#x5BB9;&#x91CF;&#x6700;&#x5927;10G
+  ceph osd pool set-quota default max_bytes $((10 * 1024 * 1024 * 1024))
+</code></pre></li>
+<li><p>&#x91CD;&#x547D;&#x540D;POOL</p>
+<pre><code>  ceph osd pool rename default nondefault
+</code></pre></li>
+<li><p>&#x67E5;&#x770B;POOL&#x72B6;&#x6001;&#x4FE1;&#x606F;</p>
+<pre><code>  rados df
+  POOL_NAME USED OBJECTS CLONES COPIES MISSING_ON_PRIMARY UNFOUND DEGRADED RD_OPS  RD WR_OPS  WR
+  default    0 B       0      0      0                  0       0        0      0 0 B      0 0 B
+
+  total_objects    0
+  total_used       2.8 GiB
+  total_avail      612 GiB
+  total_space      615 GiB
+</code></pre></li>
+<li><p>&#x5FEB;&#x7167;</p>
+<pre><code>  Pool Snapshot:
+  ceph osd pool mksnap default default_snap0
+  ceph osd pool rmsnap default default_snap0
+
+  Self Managed Snapshot:
+  Null.
+</code></pre></li>
+</ul>
+</li>
+<li><p>&#x901A;&#x5E38;&#x5728;&#x521B;&#x5EFA;pool&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;pg_num&#xFF0C;&#x5B98;&#x65B9;&#x63A8;&#x8350;</p>
+<ul>
+<li>&#x82E5;&#x5C11;&#x4E8E;5&#x4E2A;OSD&#xFF0C;&#x8BBE;&#x7F6E;pg_num&#x4E3A;128</li>
+<li>5-10&#x4E2A;OSD&#xFF0C;&#x8BBE;&#x7F6E;pg_num&#x4E3A;512</li>
+<li>10-50&#x4E2A;OSD&#xFF0C;&#x8BBE;&#x7F6E;pg_num&#x4E3A;4096</li>
+<li><p>&#x8D85;&#x8FC7;50&#x4E2A;OSD&#xFF0C;&#x6309;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;</p>
+<p>&#x6574;&#x4E2A;&#x96C6;&#x7FA4;PG&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;</p>
+<p>  Total PGs = ((Total_number_of OSD * 100) / max_replication_count)</p>
+<p>&#x6BCF;&#x4E2A;POOL&#x4E2D;PG&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;</p>
+<p>  Total PGs = (Total_number_of_OSD * 100) / max_replication_count / pool_count</p>
+<p>&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#x5411;&#x4E0A;&#x53D6;&#x9760;&#x8FD1;2&#x7684;&#x5E42;&#x3002;&#x5728;&#x66F4;&#x6539;pool&#x7684;PG&#x6570;&#x91CF;&#x65F6;&#xFF0C;&#x9700;&#x540C;&#x65F6;&#x66F4;&#x6539;PGP&#x7684;&#x6570;&#x91CF;&#xFF0C;PGP&#x662F;&#x4E3A;&#x4E86;&#x7BA1;&#x7406;placement&#x800C;&#x5B58;&#x5728;&#x7684;&#x4E13;&#x95E8;&#x7684;PG&#xFF0C;&#x5B83;&#x6838;PG&#x7684;&#x6570;&#x91CF;&#x5E94;&#x8BE5;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x7684;relalanceing&#x3002;</p>
+<p>&#x68C0;&#x67E5;default&#x91CC;&#x9762;&#x7684;PG&#x548C;PGP&#x6570;&#x76EE;</p>
+<p>  ceph osd pool get default pg_num
+  ceph osd pool get default
+  pgp_num</p>
+<p>&#x4FEE;&#x6539;default&#x7684;PG&#x548C;PGP&#x503C;</p>
+<p>  ceph osd pool set default pg_num 128
+  ceph osd pool set default pgp_num 128</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="github-ceph">github ceph</h2>
+<ul>
+<li><p>&#x5B89;&#x88C5;&#x524D;&#x51C6;&#x5907;</p>
+<pre><code>  dev-util/babeltrace *
+  dev-util/gperf
+  gmake
+  cmake
+  yasm
+  dev-libs/boost
+  boost-python-libs ?
+  dev-util/valgrind *
+  dev-util/pkgconf *
+  dev-libs/libedit *
+  sys-devel/libtool
+  dev-util/google-perftools
+  dev-python/cython *
+  dev-python/virtualenv *
+  dev-libs/leveldb
+  net-nds/openldap
+  dev-libs/nss
+  app-arch/snappy
+  app-arch/lz4 *
+  sys-fs/xfsprogs *
+  app-misc/getopt *
+  net-misc/socat
+  app-text/xmlstarlet *
+  app-misc/jq *
+  dev-python/sphinx *
+  app-emulation/fuse *
+  dev-java/junit *
+  dev-python/pip *
+  dev-python/nose *
+  dev-python/prettytable *
+  dev-python/flask *
+  sys-fs/fuse
+  sys-apps/flock *
+  sys-auth/oath-toolkit *
+</code></pre></li>
+</ul>
+<pre><code>    #steps
+    emerge --ask dev-python/sphinx
+    USE=&quot;static-libs&quot; emerge --ask sys-fabric/libibverbs
+    USE=&quot;static-libs&quot; emerge --ask sys-fabric/librdmacm
+    USE=&quot;static-libs&quot; emerge --ask dev-util/cunit
+    USE=&quot;static static-libs&quot; emerge --ask keyutils
+    emerge --ask sys-auth/oath-toolkit
+    emerge --ask dev-libs/userspace-rcu dev-util/lttng-ust
+    emerge --ask dev-util/babeltrace
+    emerge --ask dev-python/cython
+    emerge -pv dev-python/virtualenv
+    emerge --ask dev-python/pip
+
+    File:/usr/share/boost-build/site-config.jam
+        variant gentoorelease : release : &lt;optimization&gt;speed &lt;debug-symbols&gt;off &lt;runtime-link&gt;shared ;
+        variant gentoodebug   : debug   : &lt;optimization&gt;speed &lt;debug-symbols&gt;on   &lt;runtime-link&gt;shared ;
+
+    # dashboard&#x7F3A;&#x5C11;bind&#x81F3;&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#xFF0C;&#x53BB;&#x9664;dashboard&#x7EC4;&#x4EF6;&#x7684;&#x7F16;&#x8BD1;
+    File:src/pybind/mgr/CMakeLists.txt
+        #add_subdirectory(dashboard)
+    # &#x6216;&#x8005;&#x6DFB;&#x52A0;&#x5BF9;&#x5E94;bind
+    cd src/pybind/mgr/dashboard/frontend/node_modules/node-sass/vendor/linux-x64-57
+    wget https://github.com/sass/node-sass/releases/download/v4.9.3/linux-x64-57_binding.node
+    ln -s linux-x64-57_binding.node binding.node
+
+    pip3 install ceph-deploy --user
+
+    File:/usr/local/bin/ceph-deploy
+        #!/bin/bash
+        #echo $*
+        #echo ${#1}
+        parlst=$*
+        parlst=${parlst[@]:${#1}}
+        ~/.local/lib64/python3.6/site-packages/ceph-deploy/$1 $parlst;
+</code></pre>
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Gentoo maintain.html#virtualbox" class="navigation navigation-prev " aria-label="Previous page: Virtualbox">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Ceph status.html" class="navigation navigation-next " aria-label="Next page: ceph pg 状态">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ceph 分布式存储系统","level":"2.2.3","depth":2,"next":{"title":"ceph pg 状态","level":"2.2.3.1","depth":3,"path":"content/Becoming A Master/Gentoo服务器/Ceph status.md","ref":"./content/Becoming A Master/Gentoo服务器/Ceph status.md","articles":[]},"previous":{"title":"Virtualbox","level":"2.2.2.36","depth":3,"anchor":"#virtualbox","path":"content/Becoming A Master/Gentoo服务器/Gentoo maintain.md","ref":"./content/Becoming A Master/Gentoo服务器/Gentoo maintain.md#virtualbox","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-disqus","advanced-emoji","include-codeblock","ace","emphasize","katex","splitter","-sharing","-tbfed-pagefooter","-toggle-chapters","sectionx","codeblock-filename","baidu","livereload"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"@Copyright &copy bitbybit.top 2016","modify_label":"修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"disqus":{"shortName":"docbook"},"emphasize":{},"ace":{},"livereload":{},"splitter":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":1},"sectionx":{},"highlight":{},"codeblock-filename":{},"baidu":{"token":"f095aafc0c7b0201f1c10810832e9a09"},"advanced-emoji":{"embedEmojis":false},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":false,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"toc":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"随笔","links":{"sidebar":{"首页":""}},"gitbook":"*","description":null,"extension":null},"file":{"path":"content/Becoming A Master/Gentoo服务器/Construct Ceph.md","mtime":"2018-09-07T06:11:57.084Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T06:38:15.538Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

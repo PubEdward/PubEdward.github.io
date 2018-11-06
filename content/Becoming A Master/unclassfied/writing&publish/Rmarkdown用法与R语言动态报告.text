@@ -1,0 +1,164 @@
+Rmarkdown用法与R语言动态报告
+数据分析用R语言非常便捷，因为R语言的社区强大，并且在不断更新和完善，提供了各种分析利器。Knitr和Rmarkdown包则是数据分析中的动态报告利器。
+下面是一份输出HTML文档的Rmd文件。备忘---
+# 一级标题（#+空格+文字） 
+## 二级标题（##+空格+文字） 
+。。。。。。。 
+。。。。。。。 
+##### 五级标题 
+### 无序列表 
+运动： 
+- 篮球 
+- 足球 
+### 有序列表
+排名： 
+1. 第一名 
+2. 第二名 
+3. 第三名
+## 嵌入代码
+把r换成python，就可以嵌入python代码  
+```{r, warning=TRUE}
+1:20
+```
+### 链接 
+<http://rpubs.com/loness/167347> 
+[点击查看](http://rpubs.com/loness/167347) 
+### 插入R代码
+```{r}
+x<-seq( 0,2*pi,0.2 )
+y<-sin( x )
+plot( x,y )
+``` 
+### 其他
+1. 注意新行是在每行的末尾加两个以上的空格
+2. 可以在markdown中插入HTML，但不是R代码中。例如:<a href="http://rpubs.com/loness/167347">点击进入</a>
+### 再次插入R代码
+```{r}
+1+1
+```
+参数1
+eval: (TRUE; 逻辑)：是否执行代码
+tidy: (TRUE; 逻辑)：是否整理代码
+prompt: (FALSE; 逻辑)：是否添加引导符’>‘
+highlight: (TRUE; 字符)：是否高亮代码
+size: (’normalsize’; 字符)：大小 background: (‘#F7F7F7’; 字符或数值)：背景颜色
+comment: (‘##’; 字符)：结果输出前缀符号
+echo: (TRUE; 逻辑或数值)：是否输出代码或输出哪些行
+results: (‘markup’; 字符): 装裱输出(‘markup’)、原样输出(‘asis’)、隐藏(‘hide’)
+warning, error, message: (TRUE; 逻辑)：是否显示相应信息
+split: (FALSE; 逻辑)：是否剥离代码和文本到外部文件
+include: (TRUE; 逻辑)：是否保留代码或结果到最终文档
+参数2
+fig.path: (‘figure/’; 字符)：图片路径，支持前缀模式(‘figure/prefix-’)
+fig.keep: (‘high’; 字符)：保存图形类型，高级图形(‘high’)、不保存(‘none’)、所有图形(‘all’)、第一张(‘first’)、最后一张(‘last’)
+fig.show: (‘asis’; 字符)：展示方式，紧随代码输出(‘asis’)、最后统一输出(‘hold’)、动画输出(‘animate’)
+dev: (LaTeX 为’pdf’, HTML/markdown 为’png’; 字符)：输出设备，knitr 支持很多种设备
+fig.width, fig.height: (7; 数值)：图片文件的宽、高(英寸2.54cm 为单位)
+out.width, out.height: (NULL; 字符)：图片在输出文档中的宽、高
+fig.align: (‘default’; 字符)：对齐方式，不做调节(‘default’)、左(‘left’)、右(‘right’)、居中(‘center’)
+interval: (1; 数值)：动画参数，切换画面时间，单位为秒
+
+
+***Markdown 指南
+常用语法帮助
+最常见的 Markdown 格式选项和键盘快捷键:
+输出后的效果
+Markdown
+快捷键
+Bold
+**text**
+Ctrl/⌘ + B
+Emphasize
+*text*
+Ctrl/⌘ + I
+Strike-through
+~~text~~
+Ctrl + Alt + U
+Link
+[title](http://)
+Ctrl/⌘ + K
+Inline Code
+`code`
+Ctrl/⌘ + Shift + K
+Image
+![alt](http://)
+Ctrl/⌘ + Shift + I
+List
+* item
+Ctrl + L
+Blockquote
+> quote
+Ctrl + Q
+H1
+# Heading
+ 
+H2
+## Heading
+Ctrl/⌘ + H
+H3
+### Heading
+Ctrl/⌘ + H (x2)
+标题
+标题能显示出文章的结构。行首插入 1-6 个 # ，每增加一个 # 表示更深入层次的内容，对应到标题的深度由 1-6 阶。
+H1 : # Header 1
+H2 : ## Header 2
+H3 : ### Header 3
+H4 : #### Header 4
+H5 : ##### Header 5
+H6 : ###### Header 6
+文本样式
+链接 : [Title](URL)
+加粗 : **Bold**
+斜体字 : *Italics*
+删除线 : ~~text~~
+高亮 : ==text==
+段落 : 段落之间空一行
+换行符 : 一行结束时输入两个空格
+列表 : * 添加星号成为一个新的列表项。
+引用 : > 引用内容
+内嵌代码 :  `alert('Hello World');`
+画水平线 (HR) : --------
+图片
+使用 Markdown 将图像插入文章，你需要在 Markdown 编辑器输入 ![]()。 这时在预览面板中会自动创建一个图像上传框。你可以从电脑桌面拖放图片 (.png, .gif, .jpg) 到上传框, 或者点击图片上传框使用标准的图像上传方式。 如果你想通过链接插入网络上已经存在的图片，只要单击图片上传框的左下角的“链接”图标，这时就会呈现图像 URL 的输入框。想给图片添加一个标题, 你需要做的是将标题文本插图中的方括号，e.g; ![This is a title]().
+脚注
+使用这样的占位符号可以将脚注添加到文本中: [^1]. 另外，你可以使用“n”而不是数字的 [^n] 所以你可以不必担心使用哪个号码。在您的文章的结尾，你可以如下图所示定义匹配的注脚，URL 将变成链接:
+
+[^1]: This is my first footnote
+[^n]: Visit http://ghost.org
+[^n]: A final footnote
+写代码
+添加内嵌代码可以使用一对回勾号 `alert('Hello World')`.对于插入代码, Ghost 支持标准的 Markdown 代码和 GitHub Flavored Markdown (GFM)。标准 Markdown 基于缩进代码行或者4个空格位:
+    <header>
+        <h1>{{title}}</h1>
+    </header>
+GFM 使用三个回勾号 ```
+´´´
+<header>
+    <h1>{{title}}</h1>
+</header>
+´´´
+# 具体例子
+计算
+```{r}
+library(DT)
+datatable(iris)
+summary(iris)
+```
+散点图
+```{r}
+library(plotly)
+plot_ly(data = iris, x = Sepal.Length, y = Petal.Length, mode = "markers",
+color = Species)
+```
+时间序列图
+```{r}
+p <- plot_ly(economics, x = date, y = uempmed, name = "unemployment")
+p %>% add_trace(y = fitted(loess(uempmed ~ as.numeric(date))), x = date)
+```
+ 
+转自：
+- https://zhuanlan.zhihu.com/p/22303989
+- http://www.cnblogs.com/steamed-bread/p/5347949.html
+ 
+
+即使只是凡世中一颗小小的尘埃，命运也要由自己主宰，像向日葵般，迎向阳光、勇敢盛开
