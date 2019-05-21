@@ -6,4 +6,7 @@ six years, and now I am in the coperation of Bj muniu tech.
   Secondly, in my fomer job, I am one of the first class of employees. And I make almost eighty percent of the software, which the foundation of the product. 
   
   As an excelant software engeneer, I am a quick learner, I can grap the perspective of the micro chips I met. I'm also a geek, glade to 
-
+  
+木牛科技是一家雷达传感和智能处理系统解决方案提供商，专注于毫米波雷达、IC、高性能处理和控制等核心技术，为无人机、汽车、安防和智能家居等应用领域提供传感和智能控制解决方案。产品包括传感器、飞控平台、高度计、避障等，现应用于汽车、无人驾驶、智慧安防、智能家居等领域。 
+注册资本	1471.32万
+成立日期	2015-07-22
